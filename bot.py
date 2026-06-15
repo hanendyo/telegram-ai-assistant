@@ -63,8 +63,9 @@ async def ask_ai(prompt: str) -> str:
 # Command Handlers
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_allowed(update): return
-    await update.message.reply_text("Halo Reyhan! Aku adalah asisten pribadimu. Kirimkan pesan atau copy chat WA di sini untuk aku rangkum. Gunakan /help untuk melihat perintah.")
-
+    first_name = update.effective_user.first_name
+    await update.message.reply_text(f"Halo {first_name}! Aku adalah asisten pribadimu. Kirimkan pesan atau copy chat WA di sini untuk aku rangkum. Gunakan /help untuk melihat perintah.")
+    
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_allowed(update): return
     help_text = (
